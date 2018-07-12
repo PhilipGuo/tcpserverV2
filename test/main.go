@@ -24,11 +24,13 @@ func main() {
 
 	fmt.Println("server launched")
 
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 70000; i++ {
+		fmt.Println("enter ", i)
 		con, _ := net.Dial("tcp", "127.0.0.1:8299")
-		cl := client.NewClient(con)
+		cl := client.NewClient(con, i)
 		cl.Connect()
 		time.Sleep(time.Duration(1))
+		fmt.Println("out ", i)
 	}
 
 	select {}

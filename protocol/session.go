@@ -18,14 +18,10 @@ func NewSession(con net.Conn) *Session {
 	}
 }
 
-func (s *Session) IOLoop() {
-
-}
 func (s *Session) String() string {
 	return s.con.RemoteAddr().String()
 }
 
 func (s *Session) Read(bs []byte) (int, error) {
-
-	return 0, nil
+	return s.con.Read(bs)
 }
